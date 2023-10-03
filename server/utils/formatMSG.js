@@ -2,6 +2,6 @@ module.exports = format = (username, message) => {
   return {
     username,
     message,
-    send_at: Date.now(),
+    sent_at: Date.now(),
   };
 };

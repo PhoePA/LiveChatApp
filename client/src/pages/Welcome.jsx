@@ -51,7 +51,7 @@ const Welcome = ({ username, setUsername, room, setRoom, setSocket }) => {
               <option value="select">--- Select Room ---</option>
               <option value="React">React</option>
               <option value="NodeJs">NodeJs</option>
-              <option value="JavaScripts">JavaScripts</option>
+              <option value="JavaScript">JavaScript</option>
             </select>
           </div>
           <button

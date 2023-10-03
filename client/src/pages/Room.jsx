@@ -16,6 +16,19 @@ const Room = ({ room, username, socket }) => {
 
   const boxDivRef = useRef(null);
 
+  const getOldMessages = async () => {
+    const response = await fetch(`${import.meta.env.VITE_SERVER}/chat/${room}`);
+    if (response.status === 403) {
+      return navigate("/");
+    }
+    const data = await response.json();
+    setReceivedMessages((prev) => [...prev, ...data]);
+  };
+
+  useEffect(() => {
+    getOldMessages();
+  }, []);
+
   useEffect(
     (_) => {
       // send joined user info to server
@@ -115,7 +128,7 @@ const Room = ({ room, username, socket }) => {
                 {msg.message}
               </p>
               <p className="text-sm font-mono font-medium text-right">
-                {formatDistanceToNow(new Date(msg.send_at))}
+                {formatDistanceToNow(new Date(msg.sent_at))}
               </p>
             </div>
           ))}
